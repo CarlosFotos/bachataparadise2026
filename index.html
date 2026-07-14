@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Bachata Paradise - Paraguay 2026</title>
     <style>
         :root {
@@ -16,6 +16,7 @@
             --success: #2ec4b6;
             --danger: #e63946;
             --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --scale: 0.85; /* escala general para móvil */
         }
 
         * {
@@ -26,15 +27,18 @@
 
         html {
             scroll-behavior: smooth;
+            touch-action: pan-y; /* evita el zoom pero permite scroll vertical */
         }
 
         body {
             font-family: var(--font-main);
             background-color: var(--bg-dark);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.4;
             overflow-x: hidden;
             position: relative;
+            font-size: calc(14px * var(--scale)); /* base reducida */
+            touch-action: pan-y;
         }
 
         #particles-canvas {
@@ -52,6 +56,7 @@
             z-index: 1;
         }
 
+        /* Navbar */
         nav {
             position: fixed;
             top: 0;
@@ -60,166 +65,170 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 20, 147, 0.2);
+            padding: 5px 0;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 15px 20px;
+            padding: 8px 10px;
+            gap: 8px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: calc(1.2rem * var(--scale));
             font-weight: bold;
             color: var(--text-light);
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+        }
+
+        .logo img {
+            height: calc(28px * var(--scale));
+            width: auto;
+            border-radius: 4px;
         }
 
         .logo span {
             color: var(--primary);
             text-shadow: 0 0 10px var(--primary-glow);
+            animation: pulseGlow 1.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 5px var(--primary-glow), 0 0 10px var(--primary-glow); }
+            100% { text-shadow: 0 0 15px var(--primary-glow), 0 0 30px var(--primary-glow), 0 0 45px #ff1493; }
         }
 
         .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
+            display: none;
         }
 
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px var(--primary-glow);
-        }
-
+        /* Hero */
         header {
             position: relative;
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 20px 80px 20px;
+            padding: 80px 10px 40px 10px;
             background: linear-gradient(to bottom, rgba(15, 2, 26, 0.2) 0%, rgba(15, 2, 26, 0.85) 100%), url('img/1.jpg') no-repeat center center/cover;
+            background-size: cover;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 100%;
             z-index: 2;
+            padding: 0 10px;
         }
 
         .hero-tagline {
-            font-size: 1.2rem;
+            font-size: calc(0.9rem * var(--scale));
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             color: var(--secondary);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-weight: 600;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: calc(2.2rem * var(--scale));
             text-transform: uppercase;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             line-height: 1.1;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
         }
 
         .hero-date-loc {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
+            font-size: calc(1rem * var(--scale));
+            margin-bottom: 15px;
             font-weight: 500;
-            color: var(--text-light);
         }
 
         .hero-date-loc span {
             display: block;
-            font-size: 1.1rem;
+            font-size: calc(0.85rem * var(--scale));
             color: var(--text-muted);
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 8px 20px;
+            font-size: calc(0.85rem * var(--scale));
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: var(--text-light);
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(255, 20, 147, 0.4);
             transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
             border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--primary-glow);
+            transform: scale(1.02);
         }
 
+        /* Secciones generales */
         section {
-            padding: 80px 20px;
+            padding: 30px 8px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: calc(1.6rem * var(--scale));
             text-transform: uppercase;
-            margin-bottom: 50px;
-            position: relative;
-            letter-spacing: 2px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 4px;
+            width: 40px;
+            height: 3px;
             background: var(--primary);
-            margin: 10px auto 0 auto;
+            margin: 6px auto 0 auto;
             border-radius: 2px;
             box-shadow: 0 0 8px var(--primary-glow);
         }
 
+        /* ARTISTAS - Grid horizontal en móvil */
         .artists-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
         }
 
         .artist-card {
             position: relative;
-            border-radius: 15px;
+            border-radius: 10px;
             overflow: hidden;
             border: 2px solid rgba(255, 20, 147, 0.2);
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, border-color 0.3s;
             cursor: pointer;
             background-color: var(--bg-panel);
         }
 
         .artist-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
         }
 
         .artist-img-wrapper {
@@ -236,7 +245,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 20px 15px;
+            padding: 8px 6px;
             background: linear-gradient(to top, rgba(15, 2, 26, 0.95) 40%, rgba(15, 2, 26, 0.6) 70%, transparent 100%);
             display: flex;
             flex-direction: column;
@@ -246,74 +255,82 @@
         }
 
         .artist-name {
-            font-size: 1.4rem;
+            font-size: calc(0.7rem * var(--scale));
             font-weight: 700;
             color: var(--text-light);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            line-height: 1.2;
         }
 
         .artist-origin {
-            font-size: 0.85rem;
+            font-size: calc(0.55rem * var(--scale));
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
             font-weight: 600;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
         }
 
         .btn-instagram {
-            padding: 6px 18px;
-            font-size: 0.8rem;
+            padding: 3px 8px;
+            font-size: calc(0.5rem * var(--scale));
             background: #e1306c;
             color: white;
-            border-radius: 20px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: background 0.3s, transform 0.3s;
+            gap: 3px;
+            transition: background 0.3s;
             border: none;
-            box-shadow: 0 3px 10px rgba(225, 48, 108, 0.3);
+            box-shadow: 0 2px 6px rgba(225, 48, 108, 0.3);
+        }
+
+        .btn-instagram svg {
+            width: 10px;
+            height: 10px;
         }
 
         .btn-instagram:hover {
             background: #fd1d1d;
-            transform: scale(1.05);
         }
 
+        /* CRONOGRAMA */
         .tabs-container {
             background: var(--bg-panel);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 12px;
+            padding: 12px 8px;
             border: 1px solid rgba(255, 20, 147, 0.1);
         }
 
         .tab-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
         }
 
         .tab-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-light);
-            padding: 10px 25px;
-            font-size: 1rem;
+            padding: 4px 12px;
+            font-size: calc(0.7rem * var(--scale));
             font-weight: 600;
-            border-radius: 30px;
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
+            white-space: nowrap;
         }
 
         .tab-btn.active, .tab-btn:hover {
             background: var(--primary);
             border-color: var(--primary);
-            box-shadow: 0 0 10px var(--primary-glow);
+            box-shadow: 0 0 8px var(--primary-glow);
         }
 
         .tab-content {
@@ -322,26 +339,26 @@
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         .schedule-theme {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: calc(0.8rem * var(--scale));
             color: var(--primary);
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .schedule-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 0;
+            padding: 6px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            gap: 15px;
+            gap: 4px;
         }
 
         .schedule-item:last-child {
@@ -351,75 +368,258 @@
         .schedule-time-details {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 6px;
             flex-grow: 1;
+            flex-wrap: wrap;
         }
 
         .schedule-time {
-            width: 90px;
-            font-size: 1.1rem;
+            font-size: calc(0.65rem * var(--scale));
             font-weight: 700;
             color: var(--secondary);
             flex-shrink: 0;
+            min-width: 50px;
         }
 
         .schedule-detail {
             flex-grow: 1;
+            min-width: 0;
         }
 
         .schedule-title {
-            font-size: 1.1rem;
+            font-size: calc(0.65rem * var(--scale));
             font-weight: 600;
+            line-height: 1.2;
         }
 
         .schedule-instructor {
-            font-size: 0.9rem;
+            font-size: calc(0.55rem * var(--scale));
             color: var(--text-muted);
         }
 
         .schedule-actions {
             display: flex;
-            gap: 10px;
+            gap: 4px;
             align-items: center;
             flex-shrink: 0;
         }
 
         .action-btn {
-            width: 40px;
-            height: 40px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: none;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
             color: white;
             text-decoration: none;
         }
 
         .action-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
+        }
+
+        .action-btn svg {
+            width: 14px;
+            height: 14px;
         }
 
         .btn-camara {
-            background-color: #2ec4b6; 
-            box-shadow: 0 0 8px rgba(46, 196, 182, 0.4);
-        }
-
-        .btn-camara:hover {
-            box-shadow: 0 0 15px rgba(46, 196, 182, 0.8);
+            background-color: #2ec4b6;
+            box-shadow: 0 0 6px rgba(46, 196, 182, 0.4);
         }
 
         .btn-video {
-            background-color: #9d4edd; 
-            box-shadow: 0 0 8px rgba(157, 78, 221, 0.4);
+            background-color: #9d4edd;
+            box-shadow: 0 0 6px rgba(157, 78, 221, 0.4);
         }
 
-        .btn-video:hover {
-            box-shadow: 0 0 15px rgba(157, 78, 221, 0.8);
+        /* Código de conducta */
+        .code-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            max-width: 100%;
         }
 
+        .code-block {
+            background: var(--bg-panel);
+            border-radius: 10px;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-block h3 {
+            font-size: calc(0.8rem * var(--scale));
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .code-list li {
+            font-size: calc(0.6rem * var(--scale));
+            padding-left: 16px;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        /* Hotel */
+        .hotel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: var(--bg-panel);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 20, 147, 0.15);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .hotel-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+        }
+
+        .hotel-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hotel-info {
+            text-align: center;
+        }
+
+        .hotel-info h3 {
+            font-size: calc(1.4rem * var(--scale));
+            margin-bottom: 2px;
+        }
+
+        .hotel-stars {
+            font-size: calc(1.2rem * var(--scale));
+            margin-bottom: 6px;
+        }
+
+        .hotel-info p {
+            margin: 4px 0;
+            font-size: calc(0.75rem * var(--scale));
+        }
+
+        .map-container {
+            margin-top: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 12px rgba(255, 20, 147, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 180px;
+            border: 0;
+            display: block;
+        }
+
+        /* Staff */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--bg-panel);
+            border-radius: 10px;
+            padding: 10px 5px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .team-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 6px auto;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 8px rgba(255, 20, 147, 0.3);
+            overflow: hidden;
+            background: #0f021a;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-role {
+            font-size: calc(0.55rem * var(--scale));
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .team-name {
+            font-size: calc(0.7rem * var(--scale));
+            font-weight: bold;
+            color: var(--text-light);
+        }
+
+        .team-handle {
+            display: block;
+            font-size: calc(0.55rem * var(--scale));
+            color: var(--text-muted);
+            margin-top: 2px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .team-handle:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #07010d;
+            text-align: center;
+            padding: 20px 10px;
+            border-top: 1px solid rgba(255, 20, 147, 0.1);
+            font-size: calc(0.7rem * var(--scale));
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modales */
         .modal {
             display: none;
             position: fixed;
@@ -443,26 +643,26 @@
         .modal-content {
             background: var(--bg-panel);
             border: 2px solid var(--primary);
-            border-radius: 20px;
-            padding: 35px;
-            max-width: 500px;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 90%;
             width: 90%;
             position: relative;
             text-align: center;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.4);
             animation: modalScale 0.3s ease;
         }
 
         @keyframes modalScale {
-            from { transform: scale(0.8); }
+            from { transform: scale(0.9); }
             to { transform: scale(1); }
         }
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
+            top: 10px;
+            right: 15px;
+            font-size: calc(1.8rem * var(--scale));
             color: var(--text-muted);
             cursor: pointer;
             transition: color 0.3s;
@@ -473,308 +673,44 @@
         }
 
         .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-size: calc(1.2rem * var(--scale));
+            margin-bottom: 15px;
             color: white;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .video-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .video-item {
-            display: block;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 20, 147, 0.2);
-            border-radius: 10px;
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .video-item:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+            letter-spacing: 0.5px;
         }
 
         .img-modal-content {
             max-width: 90%;
-            max-height: 85vh;
-            border-radius: 10px;
+            max-height: 80vh;
+            border-radius: 8px;
             border: 2px solid var(--primary);
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.5);
             object-fit: contain;
         }
 
-        .code-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .code-block {
-            background: var(--bg-panel);
-            border-radius: 12px;
-            padding: 18px 22px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .code-block.permitido {
-            border-left: 4px solid var(--success);
-        }
-
-        .code-block.no-permitido {
-            border-left: 4px solid var(--danger);
-        }
-
-        .code-block h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .code-list {
-            list-style: none;
-        }
-
-        .code-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .code-list li::before {
-            position: absolute;
-            left: 0;
-            top: 0px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .permitido .code-list li::before {
-            content: '✓';
-            color: var(--success);
-        }
-
-        .no-permitido .code-list li::before {
-            content: '✕';
-            color: var(--danger);
-        }
-
-        /* Hotel */
-        .hotel-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-            background: var(--bg-panel);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 20, 147, 0.15);
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hotel-image {
-            flex: 1 1 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.2);
-        }
-
-        .hotel-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s;
-        }
-
-        .hotel-image img:hover {
-            transform: scale(1.02);
-        }
-
-        .hotel-info {
-            flex: 1 1 300px;
-            text-align: left;
-        }
-
-        .hotel-info h3 {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            color: var(--text-light);
-        }
-
-        .hotel-stars {
-            color: #fbbf24;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .hotel-info p {
-            margin: 8px 0;
-            font-size: 1rem;
-            color: var(--text-light);
-        }
-
-        .hotel-info strong {
-            color: var(--primary);
-        }
-
-        .map-container {
-            margin-top: 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border: 0;
-            display: block;
-        }
-
-        /* Staff */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .team-card {
-            background: var(--bg-panel);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-        }
-
-        .team-avatar {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            margin: 0 auto 12px auto;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
-            overflow: hidden;
-            background: #0f021a;
-        }
-
-        .team-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .team-role {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--primary);
-            letter-spacing: 1px;
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-
-        .team-name {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--text-light);
-        }
-
-        .team-handle {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 3px;
-            display: block;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .team-handle:hover {
-            color: var(--primary);
-        }
-
-        footer {
-            background: #07010d;
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255, 20, 147, 0.1);
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+        /* Ajustes para no romper en pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .artists-grid {
+                gap: 4px;
             }
-            .nav-links {
-                display: none;
+            .team-grid {
+                gap: 4px;
             }
-            .schedule-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            .schedule-time-details {
-                width: 100%;
+            .tab-btn {
+                font-size: calc(0.6rem * var(--scale));
+                padding: 3px 8px;
             }
             .schedule-time {
-                width: auto;
+                min-width: 40px;
             }
-            .schedule-actions {
-                width: 100%;
-                justify-content: flex-end;
+            .action-btn {
+                width: 22px;
+                height: 22px;
             }
-            .hotel-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hotel-info {
-                text-align: center;
-            }
-            .map-container iframe {
-                height: 200px;
+            .action-btn svg {
+                width: 12px;
+                height: 12px;
             }
         }
     </style>
@@ -786,14 +722,11 @@
     <div class="content-wrapper">
         <nav>
             <div class="nav-container">
-                <a href="#" class="logo">Bachata<span>Paradise</span></a>
-                <ul class="nav-links">
-                    <li><a href="#artistas">Artistas</a></li>
-                    <li><a href="#cronograma">Cronograma</a></li>
-                    <li><a href="#codigo">Código</a></li>
-                    <li><a href="#hotel">Hotel</a></li>
-                    <li><a href="#team">Staff</a></li>
-                </ul>
+                <a href="#" class="logo">
+                    <img src="img/logo.jpg" alt="Logo Bachata Paradise">
+                    Bachata<span>Paradise</span>
+                </a>
+                <!-- Ocultamos los enlaces en móvil, se puede agregar un menú hamburguesa si se desea -->
             </div>
         </nav>
 
@@ -815,8 +748,8 @@
                         <div class="artist-name">Andrés & Yessica</div>
                         <div class="artist-origin">España</div>
                         <a href="https://www.instagram.com/andresyyessica/" target="_blank" class="btn-instagram">
-                            <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
-                            Instagram
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                            IG
                         </a>
                     </div>
                 </div>
@@ -827,8 +760,8 @@
                         <div class="artist-name">Víctor & Alba</div>
                         <div class="artist-origin">España</div>
                         <a href="https://www.instagram.com/victoryalba_bachata/" target="_blank" class="btn-instagram">
-                            <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
-                            Instagram
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                            IG
                         </a>
                     </div>
                 </div>
@@ -839,8 +772,8 @@
                         <div class="artist-name">Giovanna & Rafael</div>
                         <div class="artist-origin">Brasil</div>
                         <a href="https://www.instagram.com/giovanayrafael/" target="_blank" class="btn-instagram">
-                            <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
-                            Instagram
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                            IG
                         </a>
                     </div>
                 </div>
@@ -860,82 +793,66 @@
                     <div class="schedule-theme">Social: "Welcome to Paradise" (23:00 a 03:00)</div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">16:00 HS</div>
+                            <div class="schedule-time">16:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Check-in & Apertura de Puertas</div>
+                                <div class="schedule-title">Check-in & Apertura</div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">17:00 HS</div>
+                            <div class="schedule-time">17:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Giovanna & Rafael</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller de Giovanna & Rafael')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Giovanna & Rafael')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
 
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">18:30 HS</div>
+                            <div class="schedule-time">18:30</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Andrés & Yessica</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller de Andrés & Yessica')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Andrés & Yessica')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
 
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">20:00 HS</div>
+                            <div class="schedule-time">20:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Víctor & Alba</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller de Víctor & Alba')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Víctor & Alba')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
 
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">23:00 HS</div>
+                            <div class="schedule-time">23:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Shows + Noche Social</div>
-                                <div class="schedule-instructor">Apertura Oficial</div>
+                                <div class="schedule-title">Shows + Social</div>
+                                <div class="schedule-instructor">Apertura</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos de la Noche">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Shows de Apertura')" title="Videos de los Shows">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Shows Apertura')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -944,69 +861,53 @@
                     <div class="schedule-theme">Social: "VIP Night" (22:00 a 03:00)</div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">15:00 HS</div>
+                            <div class="schedule-time">15:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Víctor & Alba</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado - Víctor & Alba')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado Víctor & Alba')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">16:30 HS</div>
+                            <div class="schedule-time">16:30</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Andrés & Yessica</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado - Andrés & Yessica')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado Andrés & Yessica')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">18:00 HS</div>
+                            <div class="schedule-time">18:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Giovanna & Rafael</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado - Giovanna & Rafael')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado Giovanna & Rafael')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">22:00 HS</div>
+                            <div class="schedule-time">22:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Shows + Noche Social VIP</div>
+                                <div class="schedule-title">Shows + Social VIP</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos VIP Night">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Shows Sábado VIP')" title="Videos de los Shows">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Shows Sábado VIP')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -1015,78 +916,62 @@
                     <div class="schedule-theme">Social: "Urban Disco Night" (22:00 a 03:00)</div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">12:30 HS</div>
+                            <div class="schedule-time">12:30</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Giovanna & Rafael</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo - Giovanna & Rafael')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo Giovanna & Rafael')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">14:00 HS</div>
+                            <div class="schedule-time">14:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Andrés & Yessica</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo - Andrés & Yessica')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo Andrés & Yessica')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
-                    <div class="schedule-item" style="background: rgba(255, 20, 147, 0.1); border-radius: 8px; padding: 10px 15px; margin: 10px 0;">
+                    <div class="schedule-item" style="background: rgba(255, 20, 147, 0.1); border-radius: 6px; padding: 4px 8px; margin: 4px 0;">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">16:00 HS</div>
+                            <div class="schedule-time">16:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">⚽ MUNDIAL 2026 | FINAL EN VIVO</div>
-                                <div class="schedule-instructor">Transmisión especial en pantalla gigante</div>
+                                <div class="schedule-title">⚽ MUNDIAL 2026 FINAL</div>
+                                <div class="schedule-instructor">Pantalla gigante</div>
                             </div>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">19:00 HS</div>
+                            <div class="schedule-time">19:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-title">Taller</div>
                                 <div class="schedule-instructor">Víctor & Alba</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo - Víctor & Alba')" title="Videos del Taller">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo Víctor & Alba')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <div class="schedule-time-details">
-                            <div class="schedule-time">22:00 HS</div>
+                            <div class="schedule-time">22:00</div>
                             <div class="schedule-detail">
-                                <div class="schedule-title">Shows + Noche Social de Cierre</div>
+                                <div class="schedule-title">Shows + Cierre</div>
                             </div>
                         </div>
                         <div class="schedule-actions">
-                            <a href="#" class="action-btn btn-camara" title="Fotos de la Clausura">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
-                            </a>
-                            <button class="action-btn btn-video" onclick="openVideoList('Shows del Domingo')" title="Videos de los Shows">
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
-                            </button>
+                            <a href="#" class="action-btn btn-camara"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg></a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Shows Domingo')"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -1099,28 +984,26 @@
                 <div class="code-block permitido">
                     <h3>Permitido</h3>
                     <ul class="code-list">
-                        <li>Bailar hasta cansarte y disfrutar cada canción.</li>
-                        <li>Reír, aprender y compartir con la comunidad.</li>
-                        <li>Aprender algo nuevo y mejorar cada día.</li>
-                        <li>Conocer gente increíble de toda la región.</li>
-                        <li>Crear recuerdos inolvidables.</li>
-                        <li>Disfrutar cada momento al máximo.</li>
+                        <li>Bailar hasta cansarte</li>
+                        <li>Reír y compartir</li>
+                        <li>Aprender algo nuevo</li>
+                        <li>Conocer gente increíble</li>
+                        <li>Crear recuerdos</li>
                     </ul>
                 </div>
                 <div class="code-block no-permitido">
                     <h3>No Permitido</h3>
                     <ul class="code-list">
-                        <li>Mala energía o actitudes negativas.</li>
-                        <li>Faltas de respeto hacia compañeros o staff.</li>
-                        <li>Ego y malas actitudes en la pista.</li>
-                        <li>Acoso o incomodidad hacia otros asistentes.</li>
-                        <li>Quedarte con ganas de vivir esta experiencia completa.</li>
+                        <li>Mala energía</li>
+                        <li>Faltas de respeto</li>
+                        <li>Ego en la pista</li>
+                        <li>Acoso</li>
+                        <li>Quedarte con ganas</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- HOTEL OFICIAL -->
         <section id="hotel">
             <h2 class="section-title">Hotel Oficial</h2>
             <div class="hotel-container">
@@ -1130,18 +1013,14 @@
                 <div class="hotel-info">
                     <h3>Hotel Nobile Excelsior</h3>
                     <div class="hotel-stars">⭐⭐⭐⭐</div>
-                    <p><strong>Dirección:</strong> Chile 980, Asunción, Paraguay</p>
+                    <p><strong>Dirección:</strong> Chile, Asunción, Paraguay</p>
                     <p><strong>Teléfono:</strong> +59521495632</p>
-                    <p><strong>Tarifa especial exclusiva para participantes.</strong></p>
-                    <p>Conectá 24/7 con bailarines de todo el mundo.</p>
-                    
-                    <!-- Mapa interactivo con el iframe proporcionado -->
+                    <p><strong>Tarifa especial para participantes.</strong></p>
+                    <p>Conectá 24/7 con bailarines.</p>
                     <div class="map-container">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.4968811041213!2d-57.641572623839295!3d-25.287504827270336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945d0827841a8a77%3A0xc93619f7f15f5e85!2sNobile%20Suites%20Excelsior%20Asunci%C3%B3n!5e0!3m2!1ses-419!2sar!4v1783990267939!5m2!1ses-419!2sar" 
-                            width="600" 
-                            height="300" 
-                            style="border:0; width:100%;" 
+                            style="border:0; width:100%; height:180px;" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="strict-origin-when-cross-origin">
@@ -1151,7 +1030,6 @@
             </div>
         </section>
 
-        <!-- STAFF -->
         <section id="team">
             <h2 class="section-title">Staff</h2>
             <div class="team-grid">
@@ -1183,12 +1061,12 @@
         </section>
 
         <footer>
-            <p>&copy; 2026 Bachata Paradise. Cuidamos la experiencia para que todos la disfrutemos al máximo.</p>
+            <p>&copy; 2026 Bachata Paradise.</p>
             <p>Pagina creada por <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank">Carlos Machuca Fotografía</a></p>
         </footer>
     </div>
 
-    <!-- Modal para VIDEOS -->
+    <!-- Modales -->
     <div id="video-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('video-modal')">&times;</span>
@@ -1197,29 +1075,27 @@
         </div>
     </div>
 
-    <!-- Modal para imágenes de artistas -->
     <div id="img-modal" class="modal" onclick="closeModal('img-modal')">
-        <span class="close-modal" style="position:fixed; top:20px; right:30px; color:white;">&times;</span>
+        <span class="close-modal" style="position:fixed; top:10px; right:15px; color:white; font-size:2rem;">&times;</span>
         <img id="img-modal-target" class="img-modal-content" src="" alt="Imagen Completa" onclick="event.stopPropagation();">
     </div>
 
-    <!-- Modal "Próximamente" -->
     <div id="soon-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('soon-modal')">&times;</span>
             <h3 class="modal-title" style="color: var(--primary);">📸 Próximamente</h3>
-            <p style="font-size: 1.1rem; margin: 20px 0; color: var(--text-light);">
-                Estamos preparando el contenido multimedia.<br>
-                <span style="font-size: 0.9rem; color: var(--text-muted);">Enlace de Google Fotos se agregará pronto.</span>
+            <p style="font-size: calc(0.9rem * var(--scale)); margin: 15px 0; color: var(--text-light);">
+                Estamos preparando el contenido.<br>
+                <span style="font-size: calc(0.7rem * var(--scale)); color: var(--text-muted);">Enlace de Google Fotos se agregará pronto.</span>
             </p>
-            <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-                <span>🔗 Enlace de fotos/videos: <em>pendiente</em></span>
+            <div style="margin-top: 10px; font-size: calc(0.7rem * var(--scale)); color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                🔗 Enlace: <em>pendiente</em>
             </div>
         </div>
     </div>
 
     <script>
-        // Funciones para pestañas del cronograma
+        // Funciones para pestañas
         function openDay(evt, dayName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
@@ -1236,7 +1112,6 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Modal para imágenes de artistas
         function openImageModal(imgSrc) {
             const modal = document.getElementById('img-modal');
             const modalImg = document.getElementById('img-modal-target');
@@ -1247,7 +1122,6 @@
             }, 10);
         }
 
-        // Redefinición de openVideoList: muestra el modal "Próximamente"
         function openVideoList(title) {
             const soonModal = document.getElementById('soon-modal');
             soonModal.style.display = 'flex';
@@ -1256,7 +1130,6 @@
             }, 10);
         }
 
-        // Cerrar cualquier modal
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('active');
@@ -1265,7 +1138,6 @@
             }, 300);
         }
 
-        // Cerrar con tecla Escape
         window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal('video-modal');
@@ -1274,7 +1146,7 @@
             }
         });
 
-        // --- MANEJO DE CLICS EN BOTONES DE CÁMARA (fotos) ---
+        // Botones de cámara (fotos) redirigen a "Próximamente"
         document.addEventListener('click', function(e) {
             const target = e.target.closest('.btn-camara');
             if (target) {
@@ -1287,10 +1159,9 @@
             }
         });
 
-        // --- EFECTO DE PUNTITOS FLOTANTES ---
+        // --- Partículas flotantes ---
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
-
         let particlesArray = [];
         const colors = ['#ff1493', '#9d4edd', '#ffffff', '#2ec4b6'];
 
@@ -1305,16 +1176,15 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.2 + 0.6; 
-                this.speedX = Math.random() * 0.4 - 0.2; 
-                this.speedY = Math.random() * -0.5 - 0.1; 
+                this.size = Math.random() * 1.8 + 0.4;
+                this.speedX = Math.random() * 0.3 - 0.15;
+                this.speedY = Math.random() * -0.4 - 0.1;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.5 + 0.2; 
+                this.alpha = Math.random() * 0.4 + 0.1;
             }
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.y < 0) {
                     this.y = canvas.height;
                     this.x = Math.random() * canvas.width;
@@ -1329,7 +1199,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = 5; 
+                ctx.shadowBlur = 4;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -1338,7 +1208,7 @@
 
         function initParticles() {
             particlesArray = [];
-            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 14000); 
+            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 20000);
             for (let i = 0; i < numberOfParticles; i++) {
                 particlesArray.push(new Particle());
             }
