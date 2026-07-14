@@ -262,7 +262,7 @@
             background-size: cover;
             background-position: center;
             display: block;
-            pointer-events: none; /* para que el clic vaya a la tarjeta */
+            pointer-events: none;
         }
 
         .artist-overlay {
@@ -277,7 +277,7 @@
             align-items: center;
             text-align: center;
             z-index: 2;
-            pointer-events: none; /* para que el clic vaya a la tarjeta */
+            pointer-events: none;
         }
 
         .artist-name {
@@ -313,7 +313,7 @@
             border: none;
             box-shadow: 0 4px 10px rgba(225, 48, 108, 0.4);
             letter-spacing: 0.5px;
-            pointer-events: auto; /* el botón sigue siendo clickeable */
+            pointer-events: auto;
         }
 
         .btn-instagram svg {
@@ -438,7 +438,7 @@
             display: block;
         }
 
-        /* Staff - tarjetas clickeables y grid responsive */
+        /* Staff - tarjetas clickeables */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -508,7 +508,7 @@
             border-radius: 30px;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.08);
-            pointer-events: auto; /* el enlace sigue siendo clickeable */
+            pointer-events: auto;
         }
 
         .team-handle:hover {
@@ -680,14 +680,30 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
-            /* Staff: 2 columnas para que no se corte el nombre */
+            /* Staff: 3 columnas en móvil y más pequeños */
             .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            .team-card {
+                padding: 10px 4px;
             }
             .team-avatar {
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
+                margin-bottom: 4px;
+            }
+            .team-role {
+                font-size: calc(0.5rem * var(--scale));
+                margin-bottom: 1px;
+            }
+            .team-name {
+                font-size: calc(0.6rem * var(--scale));
+                margin-bottom: 2px;
+            }
+            .team-handle {
+                font-size: calc(0.45rem * var(--scale));
+                padding: 2px 8px;
             }
             .modal-content {
                 width: 90%;
@@ -707,8 +723,18 @@
                 gap: 6px;
             }
             .team-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 6px;
+                gap: 4px;
+            }
+            .team-avatar {
+                width: 34px;
+                height: 34px;
+            }
+            .team-name {
+                font-size: calc(0.5rem * var(--scale));
+            }
+            .team-handle {
+                font-size: calc(0.4rem * var(--scale));
+                padding: 2px 6px;
             }
         }
     </style>
@@ -755,7 +781,6 @@
         <section id="artistas">
             <h2 class="section-title">Artistas Internacionales</h2>
             <div class="artists-grid">
-                <!-- Cada tarjeta es clickeable y redirige al Instagram del artista -->
                 <div class="artist-card" onclick="window.open('https://www.instagram.com/andresyyessica/', '_blank')">
                     <div class="artist-img-wrapper" style="background-image: url('img/2.jpg');"></div>
                     <div class="artist-overlay">
@@ -798,7 +823,6 @@
         <section id="galerias">
             <h2 class="section-title">Galerías de Fotos y Videos</h2>
             <div class="gallery-grid">
-                <!-- Cada tarjeta tiene un ID único que se usará para buscar sus enlaces -->
                 <div class="gallery-card" onclick="openGalleryModal('gallery-apertura')">
                     <div class="gallery-thumb">
                         <img src="img/logo3.jpg" alt="Video Apertura">
@@ -918,7 +942,7 @@
             </div>
         </section>
 
-        <!-- STAFF - tarjetas clickeables -->
+        <!-- STAFF - tarjetas clickeables, 3 columnas en móvil -->
         <section id="team">
             <h2 class="section-title">Staff</h2>
             <div class="team-grid">
@@ -1000,8 +1024,8 @@
             'gallery-apertura': {
                 title: 'Video Apertura',
                 subtitle: 'Resumen del evento',
-                fotos: '',   // ← pega aquí el enlace de Google Fotos
-                videos: ''   // ← pega aquí el enlace de Google Videos
+                fotos: '',
+                videos: ''
             },
             'gallery-viernes-talleres': {
                 title: 'Viernes - Talleres',
@@ -1067,17 +1091,14 @@
             const data = galeriasData[galleryId];
             if (!data) return;
 
-            // Actualizar título y subtítulo
             document.getElementById('gallery-modal-title').textContent = data.title;
             document.getElementById('gallery-modal-subtitle').textContent = data.subtitle || '';
 
-            // Referencias a los elementos del modal
             const linkFotos = document.getElementById('gallery-link-fotos');
             const placeholderFotos = document.getElementById('gallery-btn-fotos-placeholder');
             const linkVideos = document.getElementById('gallery-link-videos');
             const placeholderVideos = document.getElementById('gallery-btn-videos-placeholder');
 
-            // Configurar enlace de Fotos
             if (data.fotos && data.fotos.trim() !== '') {
                 linkFotos.href = data.fotos;
                 linkFotos.style.display = 'block';
@@ -1087,7 +1108,6 @@
                 placeholderFotos.style.display = 'block';
             }
 
-            // Configurar enlace de Videos
             if (data.videos && data.videos.trim() !== '') {
                 linkVideos.href = data.videos;
                 linkVideos.style.display = 'block';
@@ -1097,14 +1117,13 @@
                 placeholderVideos.style.display = 'block';
             }
 
-            // Mostrar el modal
             const modal = document.getElementById('gallery-modal');
             modal.style.display = 'flex';
             setTimeout(() => modal.classList.add('active'), 10);
         }
 
         // ════════════════════════════════════════════════════════════
-        // 3. FUNCIONES GENERALES DE MODALES (QR, cierre, etc.)
+        // 3. FUNCIONES GENERALES DE MODALES
         // ════════════════════════════════════════════════════════════
 
         function openQRModal() {
@@ -1142,7 +1161,7 @@
         });
 
         // ════════════════════════════════════════════════════════════
-        // 4. PARTÍCULAS (fondo)
+        // 4. PARTÍCULAS
         // ════════════════════════════════════════════════════════════
 
         const canvas = document.getElementById('particles-canvas');
