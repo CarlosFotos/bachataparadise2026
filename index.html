@@ -16,7 +16,7 @@
             --success: #2ec4b6;
             --danger: #e63946;
             --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            --scale: 0.85; /* escala general para móvil */
+            --scale: 0.85;
         }
 
         * {
@@ -27,7 +27,7 @@
 
         html {
             scroll-behavior: smooth;
-            touch-action: pan-y; /* evita el zoom pero permite scroll vertical */
+            touch-action: pan-y;
         }
 
         body {
@@ -37,7 +37,7 @@
             line-height: 1.4;
             overflow-x: hidden;
             position: relative;
-            font-size: calc(14px * var(--scale)); /* base reducida */
+            font-size: calc(14px * var(--scale));
             touch-action: pan-y;
         }
 
@@ -56,7 +56,6 @@
             z-index: 1;
         }
 
-        /* Navbar */
         nav {
             position: fixed;
             top: 0;
@@ -111,7 +110,6 @@
             display: none;
         }
 
-        /* Hero */
         header {
             position: relative;
             min-height: 60vh;
@@ -183,7 +181,6 @@
             transform: scale(1.02);
         }
 
-        /* Secciones generales */
         section {
             padding: 30px 8px;
             max-width: 1200px;
@@ -209,7 +206,6 @@
             box-shadow: 0 0 8px var(--primary-glow);
         }
 
-        /* ARTISTAS - Grid horizontal en móvil */
         .artists-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -234,7 +230,7 @@
         .artist-img-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 140%; 
+            padding-top: 140%;
             background-size: cover;
             background-position: center;
             display: block;
@@ -297,7 +293,6 @@
             background: #fd1d1d;
         }
 
-        /* CRONOGRAMA */
         .tabs-container {
             background: var(--bg-panel);
             border-radius: 12px;
@@ -399,14 +394,14 @@
 
         .schedule-actions {
             display: flex;
-            gap: 4px;
+            gap: 12px; /* Aumentado para separar mejor los botones */
             align-items: center;
             flex-shrink: 0;
         }
 
         .action-btn {
-            width: 26px;
-            height: 26px;
+            width: 32px;  /* Tamaño aumentado para mejor táctil */
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -423,8 +418,8 @@
         }
 
         .action-btn svg {
-            width: 14px;
-            height: 14px;
+            width: 18px;  /* Icono más grande */
+            height: 18px;
         }
 
         .btn-camara {
@@ -437,7 +432,6 @@
             box-shadow: 0 0 6px rgba(157, 78, 221, 0.4);
         }
 
-        /* Código de conducta */
         .code-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -466,7 +460,6 @@
             line-height: 1.3;
         }
 
-        /* Hotel */
         .hotel-container {
             display: flex;
             flex-direction: column;
@@ -525,7 +518,6 @@
             display: block;
         }
 
-        /* Staff */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -594,7 +586,6 @@
             text-decoration: underline;
         }
 
-        /* Footer */
         footer {
             background: #07010d;
             text-align: center;
@@ -619,7 +610,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Modales */
         .modal {
             display: none;
             position: fixed;
@@ -689,7 +679,7 @@
             object-fit: contain;
         }
 
-        /* Ajustes para no romper en pantallas muy pequeñas */
+        /* Ajustes extra para pantallas muy pequeñas */
         @media (max-width: 480px) {
             .artists-grid {
                 gap: 4px;
@@ -704,13 +694,18 @@
             .schedule-time {
                 min-width: 40px;
             }
+            /* Los botones ya están con tamaño y gap aumentados en la regla general,
+               pero podemos reforzar si es necesario */
+            .schedule-actions {
+                gap: 14px;
+            }
             .action-btn {
-                width: 22px;
-                height: 22px;
+                width: 36px;
+                height: 36px;
             }
             .action-btn svg {
-                width: 12px;
-                height: 12px;
+                width: 20px;
+                height: 20px;
             }
         }
     </style>
@@ -726,7 +721,6 @@
                     <img src="img/logo.jpg" alt="Logo Bachata Paradise">
                     Bachata<span>Paradise</span>
                 </a>
-                <!-- Ocultamos los enlaces en móvil, se puede agregar un menú hamburguesa si se desea -->
             </div>
         </nav>
 
