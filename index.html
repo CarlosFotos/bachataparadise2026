@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachata Paradise - Paraguay 2026</title>
+    <style>
+        :root {
+            --bg-dark: #0f021a;
+            --bg-panel: #1d0831;
+            --primary: #ff1493;
+            --primary-glow: #ff007f;
+            --secondary: #9d4edd;
+            --text-light: #ffffff;
+            --text-muted: #b3a2c2;
+            --success: #2ec4b6;
+            --danger: #e63946;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 2, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 20, 147, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px 20px;
+            background: linear-gradient(to bottom, rgba(15, 2, 26, 0.2) 0%, rgba(15, 2, 26, 0.85) 100%), url('img/1.jpg') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .hero-date-loc {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .hero-date-loc span {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            position: relative;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .artist-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 20, 147, 0.2);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            background-color: var(--bg-panel);
+        }
+
+        .artist-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .artist-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 140%; 
+            background-size: cover;
+            background-position: center;
+            display: block;
+        }
+
+        .artist-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 15px;
+            background: linear-gradient(to top, rgba(15, 2, 26, 0.95) 40%, rgba(15, 2, 26, 0.6) 70%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .artist-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .artist-origin {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .btn-instagram {
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            background: #e1306c;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            box-shadow: 0 3px 10px rgba(225, 48, 108, 0.3);
+        }
+
+        .btn-instagram:hover {
+            background: #fd1d1d;
+            transform: scale(1.05);
+        }
+
+        .tabs-container {
+            background: var(--bg-panel);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 20, 147, 0.1);
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .schedule-theme {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 15px;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-time-details {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .schedule-time {
+            width: 90px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .schedule-detail {
+            flex-grow: 1;
+        }
+
+        .schedule-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .schedule-instructor {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .schedule-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-camara {
+            background-color: #2ec4b6; 
+            box-shadow: 0 0 8px rgba(46, 196, 182, 0.4);
+        }
+
+        .btn-camara:hover {
+            box-shadow: 0 0 15px rgba(46, 196, 182, 0.8);
+        }
+
+        .btn-video {
+            background-color: #9d4edd; 
+            box-shadow: 0 0 8px rgba(157, 78, 221, 0.4);
+        }
+
+        .btn-video:hover {
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.8);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(7, 1, 13, 0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-panel);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 35px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
+            animation: modalScale 0.3s ease;
+        }
+
+        @keyframes modalScale {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .video-item {
+            display: block;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 20, 147, 0.2);
+            border-radius: 10px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .video-item:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .img-modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 10px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+            object-fit: contain;
+        }
+
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .code-block {
+            background: var(--bg-panel);
+            border-radius: 12px;
+            padding: 18px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-block.permitido {
+            border-left: 4px solid var(--success);
+        }
+
+        .code-block.no-permitido {
+            border-left: 4px solid var(--danger);
+        }
+
+        .code-block h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .code-list {
+            list-style: none;
+        }
+
+        .code-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .code-list li::before {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .permitido .code-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .no-permitido .code-list li::before {
+            content: '✕';
+            color: var(--danger);
+        }
+
+        /* Hotel */
+        .hotel-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            background: var(--bg-panel);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 20, 147, 0.15);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hotel-image {
+            flex: 1 1 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.2);
+        }
+
+        .hotel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .hotel-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .hotel-info {
+            flex: 1 1 300px;
+            text-align: left;
+        }
+
+        .hotel-info h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .hotel-stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hotel-info p {
+            margin: 8px 0;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .hotel-info strong {
+            color: var(--primary);
+        }
+
+        .map-container {
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            display: block;
+        }
+
+        /* Staff */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--bg-panel);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .team-avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            margin: 0 auto 12px auto;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+            overflow: hidden;
+            background: #0f021a;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .team-name {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-light);
+        }
+
+        .team-handle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .team-handle:hover {
+            color: var(--primary);
+        }
+
+        footer {
+            background: #07010d;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 20, 147, 0.1);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .schedule-time-details {
+                width: 100%;
+            }
+            .schedule-time {
+                width: auto;
+            }
+            .schedule-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            .hotel-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hotel-info {
+                text-align: center;
+            }
+            .map-container iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="content-wrapper">
+        <nav>
+            <div class="nav-container">
+                <a href="#" class="logo">Bachata<span>Paradise</span></a>
+                <ul class="nav-links">
+                    <li><a href="#artistas">Artistas</a></li>
+                    <li><a href="#cronograma">Cronograma</a></li>
+                    <li><a href="#codigo">Código</a></li>
+                    <li><a href="#hotel">Hotel</a></li>
+                    <li><a href="#team">Staff</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header id="inicio">
+            <div class="hero-content">
+                <p class="hero-tagline">1ra Edición - En el corazón de Latinoamérica</p>
+                <h1 class="hero-title">Bachata Paradise</h1>
+                <p class="hero-date-loc">17, 18 y 19 de Julio, 2026 <span>Hotel Nobile Excelsior — Asunción, Paraguay</span></p>
+                <a href="https://www.instagram.com/bachataparadise.py/" target="_blank" class="btn">Pedir Entradas (@annelexut)</a>
+            </div>
+        </header>
+
+        <section id="artistas">
+            <h2 class="section-title">Artistas Internacionales</h2>
+            <div class="artists-grid">
+                <div class="artist-card" onclick="openImageModal('img/2.jpg')">
+                    <div class="artist-img-wrapper" style="background-image: url('img/2.jpg');"></div>
+                    <div class="artist-overlay" onclick="event.stopPropagation();">
+                        <div class="artist-name">Andrés & Yessica</div>
+                        <div class="artist-origin">España</div>
+                        <a href="https://www.instagram.com/andresyyessica/" target="_blank" class="btn-instagram">
+                            <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <div class="artist-card" onclick="openImageModal('img/3.jpg')">
+                    <div class="artist-img-wrapper" style="background-image: url('img/3.jpg');"></div>
+                    <div class="artist-overlay" onclick="event.stopPropagation();">
+                        <div class="artist-name">Víctor & Alba</div>
+                        <div class="artist-origin">España</div>
+                        <a href="https://www.instagram.com/victoryalba_bachata/" target="_blank" class="btn-instagram">
+                            <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <div class="artist-card" onclick="openImageModal('img/5.jpg')">
+                    <div class="artist-img-wrapper" style="background-image: url('img/5.jpg');"></div>
+                    <div class="artist-overlay" onclick="event.stopPropagation();">
+                        <div class="artist-name">Giovanna & Rafael</div>
+                        <div class="artist-origin">Brasil</div>
+                        <a href="https://www.instagram.com/giovanayrafael/" target="_blank" class="btn-instagram">
+                            <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cronograma">
+            <h2 class="section-title">Horarios y Talleres</h2>
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openDay(event, 'viernes')">Viernes 17</button>
+                    <button class="tab-btn" onclick="openDay(event, 'sabado')">Sábado 18</button>
+                    <button class="tab-btn" onclick="openDay(event, 'domingo')">Domingo 19</button>
+                </div>
+
+                <div id="viernes" class="tab-content active">
+                    <div class="schedule-theme">Social: "Welcome to Paradise" (23:00 a 03:00)</div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">16:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Check-in & Apertura de Puertas</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">17:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Giovanna & Rafael</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller de Giovanna & Rafael')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">18:30 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Andrés & Yessica</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller de Andrés & Yessica')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">20:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Víctor & Alba</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller de Víctor & Alba')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">23:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Shows + Noche Social</div>
+                                <div class="schedule-instructor">Apertura Oficial</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos de la Noche">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Shows de Apertura')" title="Videos de los Shows">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sabado" class="tab-content">
+                    <div class="schedule-theme">Social: "VIP Night" (22:00 a 03:00)</div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">15:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Víctor & Alba</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado - Víctor & Alba')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">16:30 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Andrés & Yessica</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado - Andrés & Yessica')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">18:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Giovanna & Rafael</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Sábado - Giovanna & Rafael')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">22:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Shows + Noche Social VIP</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos VIP Night">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Shows Sábado VIP')" title="Videos de los Shows">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="domingo" class="tab-content">
+                    <div class="schedule-theme">Social: "Urban Disco Night" (22:00 a 03:00)</div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">12:30 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Giovanna & Rafael</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo - Giovanna & Rafael')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">14:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Andrés & Yessica</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo - Andrés & Yessica')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item" style="background: rgba(255, 20, 147, 0.1); border-radius: 8px; padding: 10px 15px; margin: 10px 0;">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">16:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">⚽ MUNDIAL 2026 | FINAL EN VIVO</div>
+                                <div class="schedule-instructor">Transmisión especial en pantalla gigante</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">19:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Taller de Bachata</div>
+                                <div class="schedule-instructor">Víctor & Alba</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Taller Domingo - Víctor & Alba')" title="Videos del Taller">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time-details">
+                            <div class="schedule-time">22:00 HS</div>
+                            <div class="schedule-detail">
+                                <div class="schedule-title">Shows + Noche Social de Cierre</div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <a href="#" class="action-btn btn-camara" title="Fotos de la Clausura">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"/></svg>
+                            </a>
+                            <button class="action-btn btn-video" onclick="openVideoList('Shows del Domingo')" title="Videos de los Shows">
+                                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="codigo">
+            <h2 class="section-title">Código Bachata Paradise</h2>
+            <div class="code-grid">
+                <div class="code-block permitido">
+                    <h3>Permitido</h3>
+                    <ul class="code-list">
+                        <li>Bailar hasta cansarte y disfrutar cada canción.</li>
+                        <li>Reír, aprender y compartir con la comunidad.</li>
+                        <li>Aprender algo nuevo y mejorar cada día.</li>
+                        <li>Conocer gente increíble de toda la región.</li>
+                        <li>Crear recuerdos inolvidables.</li>
+                        <li>Disfrutar cada momento al máximo.</li>
+                    </ul>
+                </div>
+                <div class="code-block no-permitido">
+                    <h3>No Permitido</h3>
+                    <ul class="code-list">
+                        <li>Mala energía o actitudes negativas.</li>
+                        <li>Faltas de respeto hacia compañeros o staff.</li>
+                        <li>Ego y malas actitudes en la pista.</li>
+                        <li>Acoso o incomodidad hacia otros asistentes.</li>
+                        <li>Quedarte con ganas de vivir esta experiencia completa.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOTEL OFICIAL -->
+        <section id="hotel">
+            <h2 class="section-title">Hotel Oficial</h2>
+            <div class="hotel-container">
+                <div class="hotel-image">
+                    <img src="img/hotel.jpg" alt="Hotel Nobile Excelsior">
+                </div>
+                <div class="hotel-info">
+                    <h3>Hotel Nobile Excelsior</h3>
+                    <div class="hotel-stars">⭐⭐⭐⭐</div>
+                    <p><strong>Dirección:</strong> Chile 980, Asunción, Paraguay</p>
+                    <p><strong>Teléfono:</strong> +59521495632</p>
+                    <p><strong>Tarifa especial exclusiva para participantes.</strong></p>
+                    <p>Conectá 24/7 con bailarines de todo el mundo.</p>
+                    
+                    <!-- Mapa interactivo con el iframe proporcionado -->
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.4968811041213!2d-57.641572623839295!3d-25.287504827270336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945d0827841a8a77%3A0xc93619f7f15f5e85!2sNobile%20Suites%20Excelsior%20Asunci%C3%B3n!5e0!3m2!1ses-419!2sar!4v1783990267939!5m2!1ses-419!2sar" 
+                            width="600" 
+                            height="300" 
+                            style="border:0; width:100%;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAFF -->
+        <section id="team">
+            <h2 class="section-title">Staff</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/A.jpg" alt="Annie">
+                    </div>
+                    <div class="team-role">Organizadora</div>
+                    <div class="team-name">Annie</div>
+                    <a href="https://www.instagram.com/annelexut/" target="_blank" class="team-handle">@annelexut</a>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/B.jpg" alt="Carlos Machuca">
+                    </div>
+                    <div class="team-role">Filmmaker & Foto</div>
+                    <div class="team-name">Carlos Machuca</div>
+                    <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank" class="team-handle">@carlosmachucafotografia</a>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/C.jpg" alt="DJ Santi Aguilera">
+                    </div>
+                    <div class="team-role">DJ</div>
+                    <div class="team-name">DJ Santi Aguilera</div>
+                    <a href="https://www.instagram.com/santi_aguilera_/" target="_blank" class="team-handle">@santi_aguilera_</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Bachata Paradise. Cuidamos la experiencia para que todos la disfrutemos al máximo.</p>
+            <p>Pagina creada por <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank">Carlos Machuca Fotografía</a></p>
+        </footer>
+    </div>
+
+    <!-- Modal para VIDEOS -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('video-modal')">&times;</span>
+            <h3 class="modal-title" id="video-modal-title">Videos Disponibles</h3>
+            <div class="video-list" id="video-list-container"></div>
+        </div>
+    </div>
+
+    <!-- Modal para imágenes de artistas -->
+    <div id="img-modal" class="modal" onclick="closeModal('img-modal')">
+        <span class="close-modal" style="position:fixed; top:20px; right:30px; color:white;">&times;</span>
+        <img id="img-modal-target" class="img-modal-content" src="" alt="Imagen Completa" onclick="event.stopPropagation();">
+    </div>
+
+    <!-- Modal "Próximamente" -->
+    <div id="soon-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('soon-modal')">&times;</span>
+            <h3 class="modal-title" style="color: var(--primary);">📸 Próximamente</h3>
+            <p style="font-size: 1.1rem; margin: 20px 0; color: var(--text-light);">
+                Estamos preparando el contenido multimedia.<br>
+                <span style="font-size: 0.9rem; color: var(--text-muted);">Enlace de Google Fotos se agregará pronto.</span>
+            </p>
+            <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                <span>🔗 Enlace de fotos/videos: <em>pendiente</em></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones para pestañas del cronograma
+        function openDay(evt, dayName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(dayName).style.display = "block";
+            document.getElementById(dayName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Modal para imágenes de artistas
+        function openImageModal(imgSrc) {
+            const modal = document.getElementById('img-modal');
+            const modalImg = document.getElementById('img-modal-target');
+            modalImg.src = imgSrc;
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        // Redefinición de openVideoList: muestra el modal "Próximamente"
+        function openVideoList(title) {
+            const soonModal = document.getElementById('soon-modal');
+            soonModal.style.display = 'flex';
+            setTimeout(() => {
+                soonModal.classList.add('active');
+            }, 10);
+        }
+
+        // Cerrar cualquier modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Cerrar con tecla Escape
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal('video-modal');
+                closeModal('img-modal');
+                closeModal('soon-modal');
+            }
+        });
+
+        // --- MANEJO DE CLICS EN BOTONES DE CÁMARA (fotos) ---
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('.btn-camara');
+            if (target) {
+                e.preventDefault();
+                const soonModal = document.getElementById('soon-modal');
+                soonModal.style.display = 'flex';
+                setTimeout(() => {
+                    soonModal.classList.add('active');
+                }, 10);
+            }
+        });
+
+        // --- EFECTO DE PUNTITOS FLOTANTES ---
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray = [];
+        const colors = ['#ff1493', '#9d4edd', '#ffffff', '#2ec4b6'];
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.2 + 0.6; 
+                this.speedX = Math.random() * 0.4 - 0.2; 
+                this.speedY = Math.random() * -0.5 - 0.1; 
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.alpha = Math.random() * 0.5 + 0.2; 
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
+                }
+                if (this.x < 0 || this.x > canvas.width) {
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 5; 
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 14000); 
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        initParticles();
+        window.addEventListener('resize', initParticles);
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    </script>
+</body>
+</html>
