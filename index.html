@@ -232,7 +232,7 @@
             box-shadow: 0 0 8px var(--primary-glow);
         }
 
-        /* ARTISTAS */
+        /* ARTISTAS - tarjeta clickeable en su totalidad */
         .artists-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -246,6 +246,7 @@
             border: 2px solid rgba(255, 20, 147, 0.2);
             transition: transform 0.3s, border-color 0.3s;
             background-color: var(--bg-panel);
+            cursor: pointer;
         }
 
         .artist-card:hover {
@@ -261,6 +262,7 @@
             background-size: cover;
             background-position: center;
             display: block;
+            pointer-events: none; /* para que el clic vaya a la tarjeta */
         }
 
         .artist-overlay {
@@ -275,6 +277,7 @@
             align-items: center;
             text-align: center;
             z-index: 2;
+            pointer-events: none; /* para que el clic vaya a la tarjeta */
         }
 
         .artist-name {
@@ -310,6 +313,7 @@
             border: none;
             box-shadow: 0 4px 10px rgba(225, 48, 108, 0.4);
             letter-spacing: 0.5px;
+            pointer-events: auto; /* el botón sigue siendo clickeable */
         }
 
         .btn-instagram svg {
@@ -434,7 +438,7 @@
             display: block;
         }
 
-        /* Staff */
+        /* Staff - tarjetas clickeables y grid responsive */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -450,6 +454,7 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.06);
             transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
         }
 
         .team-card:hover {
@@ -466,6 +471,7 @@
             box-shadow: 0 0 12px rgba(255, 20, 147, 0.25);
             overflow: hidden;
             background: #0f021a;
+            pointer-events: none;
         }
 
         .team-avatar img {
@@ -481,6 +487,7 @@
             letter-spacing: 0.5px;
             font-weight: bold;
             margin-bottom: 2px;
+            pointer-events: none;
         }
 
         .team-name {
@@ -488,6 +495,7 @@
             font-weight: bold;
             color: var(--text-light);
             margin-bottom: 6px;
+            pointer-events: none;
         }
 
         .team-handle {
@@ -500,6 +508,7 @@
             border-radius: 30px;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.08);
+            pointer-events: auto; /* el enlace sigue siendo clickeable */
         }
 
         .team-handle:hover {
@@ -671,9 +680,10 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
+            /* Staff: 2 columnas para que no se corte el nombre */
             .team-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 6px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
             .team-avatar {
                 width: 50px;
@@ -694,6 +704,10 @@
                 gap: 4px;
             }
             .gallery-grid {
+                gap: 6px;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
                 gap: 6px;
             }
         }
@@ -741,36 +755,37 @@
         <section id="artistas">
             <h2 class="section-title">Artistas Internacionales</h2>
             <div class="artists-grid">
-                <div class="artist-card">
+                <!-- Cada tarjeta es clickeable y redirige al Instagram del artista -->
+                <div class="artist-card" onclick="window.open('https://www.instagram.com/andresyyessica/', '_blank')">
                     <div class="artist-img-wrapper" style="background-image: url('img/2.jpg');"></div>
                     <div class="artist-overlay">
                         <div class="artist-name">Andrés & Yessica</div>
                         <div class="artist-origin">España</div>
-                        <a href="https://www.instagram.com/andresyyessica/" target="_blank" class="btn-instagram">
+                        <a href="https://www.instagram.com/andresyyessica/" target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
                             <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
                             Instagram
                         </a>
                     </div>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" onclick="window.open('https://www.instagram.com/victoryalba_bachata/', '_blank')">
                     <div class="artist-img-wrapper" style="background-image: url('img/3.jpg');"></div>
                     <div class="artist-overlay">
                         <div class="artist-name">Víctor & Alba</div>
                         <div class="artist-origin">España</div>
-                        <a href="https://www.instagram.com/victoryalba_bachata/" target="_blank" class="btn-instagram">
+                        <a href="https://www.instagram.com/victoryalba_bachata/" target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
                             <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
                             Instagram
                         </a>
                     </div>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" onclick="window.open('https://www.instagram.com/giovanayrafael/', '_blank')">
                     <div class="artist-img-wrapper" style="background-image: url('img/5.jpg');"></div>
                     <div class="artist-overlay">
                         <div class="artist-name">Giovanna & Rafael</div>
                         <div class="artist-origin">Brasil</div>
-                        <a href="https://www.instagram.com/giovanayrafael/" target="_blank" class="btn-instagram">
+                        <a href="https://www.instagram.com/giovanayrafael/" target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
                             <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
                             Instagram
                         </a>
@@ -903,33 +918,33 @@
             </div>
         </section>
 
-        <!-- STAFF -->
+        <!-- STAFF - tarjetas clickeables -->
         <section id="team">
             <h2 class="section-title">Staff</h2>
             <div class="team-grid">
-                <div class="team-card">
+                <div class="team-card" onclick="window.open('https://www.instagram.com/santi_aguilera_/', '_blank')">
                     <div class="team-avatar">
                         <img src="img/c.jpg" alt="DJ Santi Aguilera">
                     </div>
                     <div class="team-role">DJ</div>
                     <div class="team-name">DJ Santi Aguilera</div>
-                    <a href="https://www.instagram.com/santi_aguilera_/" target="_blank" class="team-handle">@santi_aguilera_</a>
+                    <a href="https://www.instagram.com/santi_aguilera_/" target="_blank" class="team-handle" onclick="event.stopPropagation();">@santi_aguilera_</a>
                 </div>
-                <div class="team-card">
+                <div class="team-card" onclick="window.open('https://www.instagram.com/robertosorhovigarat/', '_blank')">
                     <div class="team-avatar">
                         <img src="img/d.jpg" alt="DJ Roberto Sorho Vigarat">
                     </div>
                     <div class="team-role">DJ</div>
                     <div class="team-name">Roberto Sorho Vigarat</div>
-                    <a href="https://www.instagram.com/robertosorhovigarat/" target="_blank" class="team-handle">@robertosorhovigarat</a>
+                    <a href="https://www.instagram.com/robertosorhovigarat/" target="_blank" class="team-handle" onclick="event.stopPropagation();">@robertosorhovigarat</a>
                 </div>
-                <div class="team-card">
+                <div class="team-card" onclick="window.open('https://www.instagram.com/carlosmachucafotografia/', '_blank')">
                     <div class="team-avatar">
                         <img src="img/b.jpg" alt="Carlos Machuca">
                     </div>
                     <div class="team-role">Filmmaker & Foto</div>
                     <div class="team-name">Carlos Machuca</div>
-                    <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank" class="team-handle">@carlosmachucafotografia</a>
+                    <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank" class="team-handle" onclick="event.stopPropagation();">@carlosmachucafotografia</a>
                 </div>
             </div>
         </section>
