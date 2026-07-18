@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<!DOCTYPE html><html lang="es"><head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, 
+maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Bachata Paradise - Galerías 2026</title>
     <style>
         :root {
@@ -73,7 +72,8 @@
 
         .cloud {
             position: absolute;
-            background: radial-gradient(ellipse at center, rgba(255,255,255,0.07) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, 
+rgba(255,255,255,0.07) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(20px);
             width: 400px;
@@ -81,10 +81,14 @@
             animation: cloudFloat 50s linear infinite;
         }
 
-        .cloud:nth-child(2) { left: 5%; top: 15%; width: 500px; height: 200px; animation-duration: 55s; animation-delay: -10s; }
-        .cloud:nth-child(3) { left: 55%; top: 55%; width: 450px; height: 180px; animation-duration: 60s; animation-delay: -25s; }
-        .cloud:nth-child(4) { left: 25%; top: 75%; width: 550px; height: 220px; animation-duration: 65s; animation-delay: -35s; }
-        .cloud:nth-child(5) { left: 75%; top: 5%; width: 400px; height: 150px; animation-duration: 50s; animation-delay: -5s; }
+        .cloud:nth-child(2) { left: 5%; top: 15%; width: 500px; height: 200px; 
+animation-duration: 55s; animation-delay: -10s; }
+        .cloud:nth-child(3) { left: 55%; top: 55%; width: 450px; height: 180px; 
+animation-duration: 60s; animation-delay: -25s; }
+        .cloud:nth-child(4) { left: 25%; top: 75%; width: 550px; height: 220px; 
+animation-duration: 65s; animation-delay: -35s; }
+        .cloud:nth-child(5) { left: 75%; top: 5%; width: 400px; height: 150px; 
+animation-duration: 50s; animation-delay: -5s; }
 
         @keyframes cloudFloat {
             0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
@@ -196,7 +200,8 @@
         /* HEADER con fondo 1.jpg */
         .hero-header {
             min-height: 50vh;
-            background: linear-gradient(to bottom, rgba(15, 2, 26, 0.3) 0%, rgba(15, 2, 26, 0.8) 100%), url('img/1.jpg') no-repeat center center/cover;
+            background: linear-gradient(to bottom, rgba(15, 2, 26, 0.3) 0%, 
+rgba(15, 2, 26, 0.8) 100%), url('img/1.jpg') no-repeat center center/cover;
             background-size: cover;
             display: flex;
             align-items: center;
@@ -271,7 +276,8 @@
             left: 0;
             width: 100%;
             padding: 12px 8px;
-            background: linear-gradient(to top, rgba(15, 2, 26, 0.95) 40%, rgba(15, 2, 26, 0.6) 70%, transparent 100%);
+            background: linear-gradient(to top, rgba(15, 2, 26, 0.95) 40%, 
+rgba(15, 2, 26, 0.6) 70%, transparent 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -750,23 +756,47 @@
         <div class="cloud"></div>
     </div>
 
-    <canvas id="particles-canvas"></canvas>
+    <canvas id="particles-canvas" width="1366" height="768"></canvas>
 
     <div class="content-wrapper">
         <!-- NAV: solo botones centrados, sin logo -->
         <nav>
             <div class="nav-actions">
-                <a href="https://api.whatsapp.com/send?text=Mira%20las%20galerías%20de%20Bachata%20Paradise%202026%3A%20https%3A%2F%2Fcarlosfotos.github.io%2Fbachataparadise2026%2F" target="_blank" class="nav-btn nav-btn-compartir">
-                    <svg viewBox="0 0 24 24"><path d="M12.032 21.965c-1.821 0-3.583-.48-5.12-1.384L2.5 22l1.472-4.332A9.98 9.98 0 0 1 2.032 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm0-18.957c-4.951 0-8.977 4.026-8.977 8.977 0 1.582.413 3.136 1.198 4.464l-.774 2.284 2.373-.788a8.94 8.94 0 0 0 4.18 1.062c4.951 0 8.977-4.027 8.977-8.978s-4.026-8.977-8.977-8.977zm5.586 11.36c-.17.484-.782.86-1.282.984-.384.092-.768.08-1.102.02-.444-.08-.86-.308-1.508-.602-.808-.368-1.71-1.054-2.406-1.716-.392-.374-.744-.774-1.032-1.214-.438-.668-.764-1.398-.818-2.212-.048-.734.198-1.392.632-1.87.214-.232.478-.332.746-.332.176 0 .35.052.504.09.13.034.27.084.392.22.264.292.58.786.662 1.142.048.222.026.428-.07.616-.084.168-.192.286-.28.422-.12.184-.248.374-.366.55-.132.196-.278.392-.138.6.352.552.92 1.17 1.472 1.486.274.156.526.23.75.268.206.032.438.012.63-.124.242-.174.396-.424.544-.654.104-.162.208-.332.348-.456.252-.22.596-.268.872-.134.18.08.366.208.506.358.338.36.702.77 1.028 1.146.128.15.232.33.236.53.006.34-.228.668-.454.85z"/></svg>
+                <a href="https://api.whatsapp.com/send?text=Mira%20las%20galería
+s%20de%20Bachata%20Paradise%202026%3A%20https%3A%2F%2Fcarlosfotos.github.io%2Fba
+chataparadise2026%2F" target="_blank" class="nav-btn nav-btn-compartir">
+                    <svg viewBox="0 0 24 24"><path d="M12.032 21.965c-1.821 
+0-3.583-.48-5.12-1.384L2.5 22l1.472-4.332A9.98 9.98 0 0 1 2.032 12c0-5.514 
+4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm0-18.957c-4.951 0-8.977 
+4.026-8.977 8.977 0 1.582.413 3.136 1.198 4.464l-.774 2.284 2.373-.788a8.94 8.94
+0 0 0 4.18 1.062c4.951 0 8.977-4.027 
+8.977-8.978s-4.026-8.977-8.977-8.977zm5.586 11.36c-.17.484-.782.86-1.282.984-
+.384.092-.768.08-1.102.02-.444-.08-.86-.308-1.508-.602-.808-.368-1.71-1.054-
+2.406-1.716-.392-.374-.744-.774-1.032-1.214-.438-.668-.764-1.398-.818-2.212-
+.048-.734.198-1.392.632-1.87.214-.232.478-.332.746-.332.176 0 
+.35.052.504.09.13.034.27.084.392.22.264.292.58.786.662 1.142.048.222.026.428-
+.07.616-.084.168-.192.286-.28.422-.12.184-.248.374-.366.55-.132.196-.278.392-
+.138.6.352.552.92 1.17 1.472 1.486.274.156.526.23.75.268.206.032.438.012.63-
+.124.242-.174.396-.424.544-.654.104-.162.208-.332.348-.456.252-.22.596-.268.872-
+.134.18.08.366.208.506.358.338.36.702.77 1.028 
+1.146.128.15.232.33.236.53.006.34-.228.668-.454.85z"></path></svg>
                     Compartir
                 </a>
-                <a href="https://www.instagram.com/bachataparadise.py/" target="_blank" class="nav-btn nav-btn-seguir">
-                    <svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                <a href="https://www.instagram.com/bachataparadise.py/" 
+target="_blank" class="nav-btn nav-btn-seguir">
+                    <svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 
+22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 
+7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 
+12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 
+12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 
+18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"></path></svg>
                     Seguir
                 </a>
                 <!-- Botón QR -->
                 <button class="nav-btn nav-btn-qr" onclick="openQRModal()">
-                    <svg viewBox="0 0 24 24"><path d="M3,11H11V3H3M5,5H9V9H5M3,21H11V13H3M5,15H9V19H5M13,3V11H21V3M19,5H15V9H19M13,13V21H21V13M15,15H19V19H15Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M3,11H11V3H3M5,5H9V9H5M3,2
+1H11V13H3M5,15H9V19H5M13,3V11H21V3M19,5H15V9H19M13,13V21H21V13M15,15H19V19H15Z">
+</path></svg>
                     QR
                 </button>
             </div>
@@ -781,37 +811,62 @@
         <section id="artistas">
             <h2 class="section-title">Artistas Internacionales</h2>
             <div class="artists-grid">
-                <div class="artist-card" onclick="window.open('https://www.instagram.com/andresyyessica/', '_blank')">
-                    <div class="artist-img-wrapper" style="background-image: url('img/2.jpg');"></div>
+                <div class="artist-card" 
+onclick="window.open('https://www.instagram.com/andresyyessica/', '_blank')">
+                    <div class="artist-img-wrapper" style="background-image: 
+url('img/2.jpg');"></div>
                     <div class="artist-overlay">
-                        <div class="artist-name">Andrés & Yessica</div>
+                        <div class="artist-name">Andrés &amp; Yessica</div>
                         <div class="artist-origin">España</div>
-                        <a href="https://www.instagram.com/andresyyessica/" target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
-                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                        <a href="https://www.instagram.com/andresyyessica/" 
+target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" 
+d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4
+ 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 
+17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 
+0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 
+0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"></path></svg>
                             Instagram
                         </a>
                     </div>
                 </div>
 
-                <div class="artist-card" onclick="window.open('https://www.instagram.com/victoryalba_bachata/', '_blank')">
-                    <div class="artist-img-wrapper" style="background-image: url('img/3.jpg');"></div>
+                <div class="artist-card" 
+onclick="window.open('https://www.instagram.com/victoryalba_bachata/', 
+'_blank')">
+                    <div class="artist-img-wrapper" style="background-image: 
+url('img/3.jpg');"></div>
                     <div class="artist-overlay">
-                        <div class="artist-name">Víctor & Alba</div>
+                        <div class="artist-name">Víctor &amp; Alba</div>
                         <div class="artist-origin">España</div>
-                        <a href="https://www.instagram.com/victoryalba_bachata/" target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
-                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                        <a href="https://www.instagram.com/victoryalba_bachata/"
+ target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" 
+d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4
+ 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 
+17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 
+0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 
+0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"></path></svg>
                             Instagram
                         </a>
                     </div>
                 </div>
 
-                <div class="artist-card" onclick="window.open('https://www.instagram.com/giovanayrafael/', '_blank')">
-                    <div class="artist-img-wrapper" style="background-image: url('img/5.jpg');"></div>
+                <div class="artist-card" 
+onclick="window.open('https://www.instagram.com/giovanayrafael/', '_blank')">
+                    <div class="artist-img-wrapper" style="background-image: 
+url('img/5.jpg');"></div>
                     <div class="artist-overlay">
-                        <div class="artist-name">Giovanna & Rafael</div>
+                        <div class="artist-name">Giovanna &amp; Rafael</div>
                         <div class="artist-origin">Brasil</div>
-                        <a href="https://www.instagram.com/giovanayrafael/" target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
-                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"/></svg>
+                        <a href="https://www.instagram.com/giovanayrafael/" 
+target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" 
+d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4
+ 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 
+17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 
+0,1 12,9M17.25,5A1.25,1.25 0 0,0 16,6.25A1.25,1.25 0 0,0 17.25,7.5A1.25,1.25 0 
+0,0 18.5,6.25A1.25,1.25 0 0,0 17.25,5Z"></path></svg>
                             Instagram
                         </a>
                     </div>
@@ -823,9 +878,12 @@
         <section id="galerias">
             <h2 class="section-title">Galerías de Fotos y Videos</h2>
             <div class="gallery-grid">
-                <div class="gallery-card" onclick="openGalleryModal('gallery-apertura')">
+                <!-- VIDEO APERTURA → redirige a Instagram (misma ventana) -->
+                <div class="gallery-card" onclick="window.location.href='https://www.instagram.com/p/Da6XvYDNeqR/';">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Video Apertura">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" alt="Video
+ Apertura">
                     </div>
                     <div class="gallery-info">
                         <h4>Video Apertura</h4>
@@ -834,27 +892,37 @@
                 </div>
 
                 <!-- Viernes -->
-                <div class="gallery-card" onclick="openGalleryModal('gallery-viernes-talleres')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+viernes-talleres')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Viernes Talleres">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Viernes Talleres">
                     </div>
                     <div class="gallery-info">
                         <h4>Viernes - Talleres</h4>
-                        <p>Giovanna & Rafael · Andrés & Yessica · Víctor & Alba</p>
+                        <p>Giovanna &amp; Rafael · Andrés &amp; Yessica · Víctor
+ &amp; Alba</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openGalleryModal('gallery-viernes-shows')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+viernes-shows')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Viernes Shows">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Viernes Shows">
                     </div>
                     <div class="gallery-info">
                         <h4>Viernes - Shows</h4>
                         <p>Presentaciones de apertura</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openGalleryModal('gallery-viernes-social')">
+                <!-- VIERNES SOCIAL → redirige a Google Photos (misma ventana) -->
+                <div class="gallery-card" onclick="window.location.href='https://photos.app.goo.gl/84HVmqnKSWRCHwds6';">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Viernes Social">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Viernes Social">
                     </div>
                     <div class="gallery-info">
                         <h4>Viernes - Social</h4>
@@ -863,27 +931,37 @@
                 </div>
 
                 <!-- Sábado -->
-                <div class="gallery-card" onclick="openGalleryModal('gallery-sabado-talleres')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+sabado-talleres')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Sábado Talleres">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Sábado Talleres">
                     </div>
                     <div class="gallery-info">
                         <h4>Sábado - Talleres</h4>
-                        <p>Víctor & Alba · Andrés & Yessica · Giovanna & Rafael</p>
+                        <p>Víctor &amp; Alba · Andrés &amp; Yessica · Giovanna 
+&amp; Rafael</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openGalleryModal('gallery-sabado-shows')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+sabado-shows')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Sábado Shows">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Sábado Shows">
                     </div>
                     <div class="gallery-info">
                         <h4>Sábado - Shows</h4>
                         <p>Presentaciones VIP</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openGalleryModal('gallery-sabado-social')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+sabado-social')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Sábado Social">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Sábado Social">
                     </div>
                     <div class="gallery-info">
                         <h4>Sábado - Social</h4>
@@ -892,27 +970,37 @@
                 </div>
 
                 <!-- Domingo -->
-                <div class="gallery-card" onclick="openGalleryModal('gallery-domingo-talleres')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+domingo-talleres')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Domingo Talleres">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Domingo Talleres">
                     </div>
                     <div class="gallery-info">
                         <h4>Domingo - Talleres</h4>
-                        <p>Giovanna & Rafael · Andrés & Yessica · Víctor & Alba</p>
+                        <p>Giovanna &amp; Rafael · Andrés &amp; Yessica · Víctor
+ &amp; Alba</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openGalleryModal('gallery-domingo-shows')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+domingo-shows')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Domingo Shows">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Domingo Shows">
                     </div>
                     <div class="gallery-info">
                         <h4>Domingo - Shows</h4>
                         <p>Presentaciones finales</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openGalleryModal('gallery-domingo-social')">
+                <div class="gallery-card" onclick="openGalleryModal('gallery-
+domingo-social')">
                     <div class="gallery-thumb">
-                        <img src="img/logo3.jpg" alt="Domingo Social">
+                        <img 
+src="https://carlosfotos.github.io/bachataparadise2026/img/logo3.jpg" 
+alt="Domingo Social">
                     </div>
                     <div class="gallery-info">
                         <h4>Domingo - Social</h4>
@@ -922,7 +1010,7 @@
             </div>
         </section>
 
-        <!-- HOTEL -->
+        <!-- HOTEL OFICIAL -->
         <section id="hotel">
             <h2 class="section-title">Hotel Oficial</h2>
             <div class="hotel-container">
@@ -932,303 +1020,242 @@
                 </div>
                 <div class="map-container">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.4968811041213!2d-57.641572623839295!3d-25.287504827270336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945d0827841a8a77%3A0xc93619f7f15f5e85!2sNobile%20Suites%20Excelsior%20Asunci%C3%B3n!5e0!3m2!1ses-419!2sar!4v1783990267939!5m2!1ses-419!2sar" 
-                        style="border:0; width:100%; height:200px;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.5!2d-57.635!3d-25.283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945f9b3f0b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sHotel%20Nobile%20Excelsior!5e0!3m2!1ses!2spy!4v1610000000000" 
+allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
 
-        <!-- STAFF - tarjetas clickeables, 3 columnas en móvil -->
-        <section id="team">
+        <!-- STAFF -->
+        <section id="staff">
             <h2 class="section-title">Staff</h2>
             <div class="team-grid">
                 <div class="team-card" onclick="window.open('https://www.instagram.com/santi_aguilera_/', '_blank')">
                     <div class="team-avatar">
-                        <img src="img/c.jpg" alt="DJ Santi Aguilera">
+                        <img src="img/santi.jpg" alt="Santi Aguilera">
                     </div>
                     <div class="team-role">DJ</div>
-                    <div class="team-name">DJ Santi Aguilera</div>
-                    <a href="https://www.instagram.com/santi_aguilera_/" target="_blank" class="team-handle" onclick="event.stopPropagation();">@santi_aguilera_</a>
+                    <div class="team-name">Santi Aguilera</div>
+                    <span class="team-handle">@santi_aguilera_</span>
                 </div>
                 <div class="team-card" onclick="window.open('https://www.instagram.com/robertosorhovigarat/', '_blank')">
                     <div class="team-avatar">
-                        <img src="img/d.jpg" alt="DJ Roberto Sorho Vigarat">
+                        <img src="img/roberto.jpg" alt="Roberto Sorho Vigarat">
                     </div>
                     <div class="team-role">DJ</div>
                     <div class="team-name">Roberto Sorho Vigarat</div>
-                    <a href="https://www.instagram.com/robertosorhovigarat/" target="_blank" class="team-handle" onclick="event.stopPropagation();">@robertosorhovigarat</a>
+                    <span class="team-handle">@robertosorhovigarat</span>
                 </div>
                 <div class="team-card" onclick="window.open('https://www.instagram.com/carlosmachucafotografia/', '_blank')">
                     <div class="team-avatar">
-                        <img src="img/b.jpg" alt="Carlos Machuca">
+                        <img src="img/carlos.jpg" alt="Carlos Machuca">
                     </div>
-                    <div class="team-role">Filmmaker & Foto</div>
+                    <div class="team-role">Filmmaker &amp; Foto</div>
                     <div class="team-name">Carlos Machuca</div>
-                    <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank" class="team-handle" onclick="event.stopPropagation();">@carlosmachucafotografia</a>
+                    <span class="team-handle">@carlosmachucafotografia</span>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 Bachata Paradise. Todos los derechos reservados.</p>
+            <p>Bachata Paradise 2026 &bull; Todos los derechos reservados</p>
         </footer>
     </div>
 
-    <!-- MODAL QR (imagen) -->
-    <div id="qr-modal" class="modal-overlay" onclick="closeModalOutside(event)">
-        <div class="modal-content" onclick="event.stopPropagation();">
-            <button class="modal-close" onclick="closeModal('qr-modal')">&times;</button>
+    <!-- MODAL QR -->
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeQRModal()">&times;</button>
             <h3 class="modal-title">Código QR</h3>
-            <img src="img/qr.jpg" alt="Código QR" class="modal-image">
-            <p style="margin-top: 12px; color: var(--text-muted); font-size: calc(0.7rem * var(--scale));">Escanea para compartir la página</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://carlosfotos.github.io/bachataparadise2026/" alt="QR" class="modal-image" style="width:100%; max-width:250px; margin:0 auto;">
+            <p style="margin-top:10px; color:var(--text-muted); font-size:0.8rem;">Escanea para acceder a la galería</p>
         </div>
     </div>
 
-    <!-- MODAL GALERÍAS (con links dinámicos) -->
-    <div id="gallery-modal" class="modal-overlay" onclick="closeModalOutside(event)">
-        <div class="modal-content" onclick="event.stopPropagation();">
-            <button class="modal-close" onclick="closeModal('gallery-modal')">&times;</button>
-            <h3 class="modal-title" id="gallery-modal-title">Galería</h3>
-            <p style="color: var(--text-muted); margin-bottom: 16px;" id="gallery-modal-subtitle"></p>
-            <div class="modal-links">
-                <a id="gallery-link-fotos" href="#" target="_blank" class="modal-link" style="display: none;">
-                    📸 Ver Fotos
-                    <span>Enlace a las fotos</span>
-                </a>
-                <button id="gallery-btn-fotos-placeholder" class="modal-link" onclick="closeModal('gallery-modal')">
-                    📸 Ver Fotos
-                    <span>Enlace de Google Fotos (próximamente)</span>
-                </button>
-                <a id="gallery-link-videos" href="#" target="_blank" class="modal-link" style="display: none;">
-                    🎥 Ver Videos
-                    <span>Enlace a los videos</span>
-                </a>
-                <button id="gallery-btn-videos-placeholder" class="modal-link" onclick="closeModal('gallery-modal')">
-                    🎥 Ver Videos
-                    <span>Enlace de Google Fotos (próximamente)</span>
-                </button>
-            </div>
-            <p style="font-size: calc(0.6rem * var(--scale)); color: var(--text-muted); margin-top: 14px;">Los enlaces estarán disponibles pronto.</p>
+    <!-- MODAL GALERÍAS (se genera dinámicamente con JavaScript) -->
+    <div class="modal-overlay" id="galleryModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeGalleryModal()">&times;</button>
+            <h3 class="modal-title" id="galleryModalTitle">Galería</h3>
+            <div id="galleryModalBody"></div>
         </div>
     </div>
 
     <script>
-        // ════════════════════════════════════════════════════════════
-        // 1. DATOS DE CADA GALERÍA (edita aquí los enlaces)
-        // ════════════════════════════════════════════════════════════
-        const galeriasData = {
+        // Partículas (fondo)
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            let particles = [];
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            const NUM = 60;
+            for (let i = 0; i < NUM; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: Math.random() * 2 + 1,
+                    dx: (Math.random() - 0.5) * 0.5,
+                    dy: (Math.random() - 0.5) * 0.5,
+                    color: `hsla(${Math.random() * 60 + 300}, 80%, 60%, ${Math.random() * 0.3 + 0.1})`
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.x < 0 || p.x > w) p.dx *= -1;
+                    if (p.y < 0 || p.y > h) p.dy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                });
+                // líneas entre partículas cercanas
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx*dx + dy*dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(255, 20, 147, ${0.08 * (1 - dist/120)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // MODAL QR
+        function openQRModal() {
+            document.getElementById('qrModal').classList.add('active');
+        }
+        function closeQRModal() {
+            document.getElementById('qrModal').classList.remove('active');
+        }
+        // Cerrar modal QR al hacer clic fuera
+        document.getElementById('qrModal').addEventListener('click', function(e) {
+            if (e.target === this) closeQRModal();
+        });
+
+        // MODAL GALERÍAS
+        const galleryData = {
             'gallery-apertura': {
                 title: 'Video Apertura',
-                subtitle: 'Resumen del evento',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Ver Video', url: 'https://www.instagram.com/p/Da6XvYDNeqR/' }
+                ]
             },
             'gallery-viernes-talleres': {
                 title: 'Viernes - Talleres',
-                subtitle: 'Giovanna & Rafael · Andrés & Yessica · Víctor & Alba',
-                fotos: 'https://photos.app.goo.gl/dt41G56WqofQtKzb8',
-                videos: ''
+                links: [
+                    { label: 'Fotos Taller Giovanna & Rafael', url: 'https://photos.app.goo.gl/ejemplo1' },
+                    { label: 'Fotos Taller Andrés & Yessica', url: 'https://photos.app.goo.gl/ejemplo2' },
+                    { label: 'Fotos Taller Víctor & Alba', url: 'https://photos.app.goo.gl/ejemplo3' }
+                ]
             },
             'gallery-viernes-shows': {
                 title: 'Viernes - Shows',
-                subtitle: 'Presentaciones de apertura',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Shows Apertura', url: 'https://photos.app.goo.gl/ejemplo4' }
+                ]
             },
             'gallery-viernes-social': {
                 title: 'Viernes - Social',
-                subtitle: 'Fotos del social "Welcome to Paradise"',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Social "Welcome to Paradise"', url: 'https://photos.app.goo.gl/84HVmqnKSWRCHwds6' }
+                ]
             },
             'gallery-sabado-talleres': {
                 title: 'Sábado - Talleres',
-                subtitle: 'Víctor & Alba · Andrés & Yessica · Giovanna & Rafael',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Taller Víctor & Alba', url: 'https://photos.app.goo.gl/ejemplo5' },
+                    { label: 'Fotos Taller Andrés & Yessica', url: 'https://photos.app.goo.gl/ejemplo6' },
+                    { label: 'Fotos Taller Giovanna & Rafael', url: 'https://photos.app.goo.gl/ejemplo7' }
+                ]
             },
             'gallery-sabado-shows': {
                 title: 'Sábado - Shows',
-                subtitle: 'Presentaciones VIP',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Shows VIP', url: 'https://photos.app.goo.gl/ejemplo8' }
+                ]
             },
             'gallery-sabado-social': {
                 title: 'Sábado - Social',
-                subtitle: 'Fotos del social "VIP Night"',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Social "VIP Night"', url: 'https://photos.app.goo.gl/ejemplo9' }
+                ]
             },
             'gallery-domingo-talleres': {
                 title: 'Domingo - Talleres',
-                subtitle: 'Giovanna & Rafael · Andrés & Yessica · Víctor & Alba',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Taller Giovanna & Rafael', url: 'https://photos.app.goo.gl/ejemplo10' },
+                    { label: 'Fotos Taller Andrés & Yessica', url: 'https://photos.app.goo.gl/ejemplo11' },
+                    { label: 'Fotos Taller Víctor & Alba', url: 'https://photos.app.goo.gl/ejemplo12' }
+                ]
             },
             'gallery-domingo-shows': {
                 title: 'Domingo - Shows',
-                subtitle: 'Presentaciones finales',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Shows Finales', url: 'https://photos.app.goo.gl/ejemplo13' }
+                ]
             },
             'gallery-domingo-social': {
                 title: 'Domingo - Social',
-                subtitle: 'Fotos del social "Urban Disco Night"',
-                fotos: '',
-                videos: ''
+                links: [
+                    { label: 'Fotos Social "Urban Disco Night"', url: 'https://photos.app.goo.gl/ejemplo14' }
+                ]
             }
         };
 
-        // ════════════════════════════════════════════════════════════
-        // 2. LÓGICA DEL MODAL
-        // ════════════════════════════════════════════════════════════
-
-        function openGalleryModal(galleryId) {
-            const data = galeriasData[galleryId];
+        function openGalleryModal(id) {
+            const data = galleryData[id];
             if (!data) return;
-
-            document.getElementById('gallery-modal-title').textContent = data.title;
-            document.getElementById('gallery-modal-subtitle').textContent = data.subtitle || '';
-
-            const linkFotos = document.getElementById('gallery-link-fotos');
-            const placeholderFotos = document.getElementById('gallery-btn-fotos-placeholder');
-            const linkVideos = document.getElementById('gallery-link-videos');
-            const placeholderVideos = document.getElementById('gallery-btn-videos-placeholder');
-
-            if (data.fotos && data.fotos.trim() !== '') {
-                linkFotos.href = data.fotos;
-                linkFotos.style.display = 'block';
-                placeholderFotos.style.display = 'none';
-            } else {
-                linkFotos.style.display = 'none';
-                placeholderFotos.style.display = 'block';
-            }
-
-            if (data.videos && data.videos.trim() !== '') {
-                linkVideos.href = data.videos;
-                linkVideos.style.display = 'block';
-                placeholderVideos.style.display = 'none';
-            } else {
-                linkVideos.style.display = 'none';
-                placeholderVideos.style.display = 'block';
-            }
-
-            const modal = document.getElementById('gallery-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
+            document.getElementById('galleryModalTitle').textContent = data.title;
+            const body = document.getElementById('galleryModalBody');
+            body.innerHTML = '';
+            data.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = '_blank';
+                a.className = 'modal-link';
+                a.textContent = link.label;
+                body.appendChild(a);
+            });
+            document.getElementById('galleryModal').classList.add('active');
         }
 
-        // ════════════════════════════════════════════════════════════
-        // 3. FUNCIONES GENERALES DE MODALES
-        // ════════════════════════════════════════════════════════════
-
-        function openQRModal() {
-            const modal = document.getElementById('qr-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').classList.remove('active');
         }
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        function closeModalOutside(e) {
-            if (e.target === e.currentTarget) {
-                const modals = document.querySelectorAll('.modal-overlay');
-                modals.forEach(m => {
-                    if (m.classList.contains('active')) {
-                        closeModal(m.id);
-                    }
-                });
-            }
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const modals = document.querySelectorAll('.modal-overlay');
-                modals.forEach(m => {
-                    if (m.classList.contains('active')) {
-                        closeModal(m.id);
-                    }
-                });
-            }
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) closeGalleryModal();
         });
 
-        // ════════════════════════════════════════════════════════════
-        // 4. PARTÍCULAS
-        // ════════════════════════════════════════════════════════════
-
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray = [];
-        const colors = ['#ff1493', '#9d4edd', '#ffffff', '#2ec4b6'];
-
-        function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        setCanvasSize();
-        window.addEventListener('resize', setCanvasSize);
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.8 + 0.4;
-                this.speedX = Math.random() * 0.3 - 0.15;
-                this.speedY = Math.random() * -0.4 - 0.1;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.4 + 0.1;
+        // Cerrar modales con Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQRModal();
+                closeGalleryModal();
             }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.y < 0) {
-                    this.y = canvas.height;
-                    this.x = Math.random() * canvas.width;
-                }
-                if (this.x < 0 || this.x > canvas.width) {
-                    this.x = Math.random() * canvas.width;
-                }
-            }
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 20000);
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-        initParticles();
-        window.addEventListener('resize', initParticles);
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
+        });
     </script>
+
 </body>
 </html>
