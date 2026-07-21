@@ -219,7 +219,7 @@ rgba(15, 2, 26, 0.8) 100%), url('img/1.jpg') no-repeat center center/cover;
 
         .section-title {
             text-align: center;
-            font-size: calc(1.6rem * var(--scale));
+            font-size: calc(1.8rem * var(--scale));
             text-transform: uppercase;
             margin-bottom: 20px;
             letter-spacing: 1px;
@@ -332,12 +332,32 @@ rgba(15, 2, 26, 0.6) 70%, transparent 100%);
             transform: scale(1.05);
         }
 
-        /* GALERÍAS */
+        /* GALERÍAS - secciones */
+        .gallery-section {
+            margin-top: 30px;
+            padding: 16px 12px;
+            border: 1px solid rgba(255, 20, 147, 0.2);
+            border-radius: 16px;
+            background: rgba(29, 8, 49, 0.4);
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-section-title {
+            text-align: center;
+            font-size: calc(1.3rem * var(--scale));
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid rgba(255, 20, 147, 0.3);
+            padding-bottom: 8px;
+        }
+
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             gap: 16px;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .gallery-card {
@@ -672,6 +692,9 @@ rgba(15, 2, 26, 0.6) 70%, transparent 100%);
                 width: 90%;
                 padding: 16px;
             }
+            .gallery-section {
+                padding: 12px 8px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -788,16 +811,16 @@ d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4
                     </div>
                 </div>
 
+                <!-- Reemplazo: John & Naty (antes Víctor & Alba) -->
                 <div class="artist-card" 
-onclick="window.open('https://www.instagram.com/victoryalba_bachata/', 
-'_blank')">
+onclick="window.open('https://www.instagram.com/johnynati/', '_blank')">
                     <div class="artist-img-wrapper" style="background-image: 
 url('img/3.jpg');"></div>
                     <div class="artist-overlay">
-                        <div class="artist-name">Víctor &amp; Alba</div>
-                        <div class="artist-origin">España</div>
-                        <a href="https://www.instagram.com/victoryalba_bachata/"
- target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
+                        <div class="artist-name">John &amp; Naty</div>
+                        <div class="artist-origin">Argentina</div>
+                        <a href="https://www.instagram.com/johnynati/" 
+target="_blank" class="btn-instagram" onclick="event.stopPropagation();">
                             <svg viewBox="0 0 24 24"><path fill="currentColor" 
 d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4
  2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 
@@ -831,153 +854,187 @@ d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4
             </div>
         </section>
 
-        <!-- GALERÍAS: todos los elementos redirigen directamente -->
+        <!-- GALERÍAS: reorganizadas por secciones -->
         <section id="galerias">
-            <h2 class="section-title">Galerías de Fotos y Videos</h2>
-            <div class="gallery-grid">
-                <!-- 1. Video Apertura -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da53WKJpghC/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m1.jpg" onerror="this.src='img/logo3.jpg'" alt="Video Apertura">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Video Apertura</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
+            <h2 class="section-title">Recaps Talleres</h2>
 
-                <!-- 2. Taller 1 -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da6XvYDNeqR/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m2.jpg" onerror="this.src='img/logo3.jpg'" alt="Taller 1">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Taller 1</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
-
-                <!-- 3. Taller 2 -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da8WuO7tt44/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m3.jpg" onerror="this.src='img/logo3.jpg'" alt="Taller 2">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Taller 2</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
-
-                <!-- 4. Taller 3 -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da8W17VtLpz/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m4.jpg" onerror="this.src='img/logo3.jpg'" alt="Taller 3">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Taller 3</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
-
-                <!-- 5. Taller 4 -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da9HEtCNqiG/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m5.jpg" onerror="this.src='img/logo3.jpg'" alt="Taller 4">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Taller 4</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
-
-                <!-- 6. Taller 5 -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da9Ion5AURn/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m6.jpg" onerror="this.src='img/logo3.jpg'" alt="Taller 5">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Taller 5</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
-
-                <!-- 7. Taller 6 -->
-                <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da9J9kuJcNs/', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m7.jpg" onerror="this.src='img/logo3.jpg'" alt="Taller 6">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Taller 6</h4>
-                        <p>Ver en Instagram</p>
-                    </div>
-                </div>
-
-                <!-- 8. Fotos Talleres Viernes -->
-                <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/dt41G56WqofQtKzb8', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m8.jpg" onerror="this.src='img/logo3.jpg'" alt="Fotos Talleres Viernes">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Fotos Talleres Viernes</h4>
-                        <p>Ver álbum en Google Photos</p>
-                    </div>
-                </div>
-
-                <!-- 9. Fotos Talleres Sábado -->
-                <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/Zno7yHcgTwGx5whg7', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m9.jpg" onerror="this.src='img/logo3.jpg'" alt="Fotos Talleres Sábado">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Fotos Talleres Sábado</h4>
-                        <p>Ver álbum en Google Photos</p>
-                    </div>
-                </div>
-
-                <!-- 10. Fotos Social Viernes -->
-                <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/84HVmqnKSWRCHwds6', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m10.jpg" onerror="this.src='img/logo3.jpg'" alt="Fotos Social Viernes">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Fotos Social Viernes</h4>
-                        <p>Ver álbum en Google Photos</p>
-                    </div>
-                </div>
-
-                <!-- 11. Fotos Social Sábado -->
-                <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/pcEthTcvVsAruTCS9', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m1.jpg" onerror="this.src='img/logo3.jpg'" alt="Fotos Social Sábado">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Fotos Social Sábado</h4>
-                        <p>Ver álbum en Google Photos</p>
-                    </div>
-                </div>
-
-                <!-- 12. Fotos Talleres Domingo -->
-                <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/cMxXiU3EE75LkynU7', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m2.jpg" onerror="this.src='img/logo3.jpg'" alt="Fotos Talleres Domingo">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Fotos Talleres Domingo 19-7-2026</h4>
-                        <p>Ver álbum en Google Photos</p>
-                    </div>
-                </div>
-
-                <!-- 13. NUEVA: Fotos Social Domingo -->
-                <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/XmaksLHtNh7JPy4E8', '_blank')">
-                    <div class="gallery-thumb">
-                        <img src="img/m3.jpg" onerror="this.src='img/logo3.jpg'" alt="Fotos Social Domingo">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Fotos Social Domingo Dia 3 19/7/2026</h4>
-                        <p>Ver álbum en Google Photos</p>
+            <!-- Video Apertura (suelto) -->
+            <div style="margin-bottom:20px;">
+                <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));">
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da53WKJpghC/', '_blank')">
+                        <div class="gallery-thumb">
+                            <img src="img/m1.jpg" onerror="this.src='img/logo3.jpg'" alt="Video Apertura">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Video Apertura</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- SECCIÓN: Talleres Viernes -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Talleres Viernes</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da6XvYDNeqR/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m2.jpg" onerror="this.src='img/logo3.jpg'" alt="Giovanna y Rafael"></div>
+                        <div class="gallery-info">
+                            <h4>Giovanna y Rafael</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da8WuO7tt44/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m3.jpg" onerror="this.src='img/logo3.jpg'" alt="Andres y Yessica"></div>
+                        <div class="gallery-info">
+                            <h4>Andres y Yessica</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da8W17VtLpz/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m4.jpg" onerror="this.src='img/logo3.jpg'" alt="Giovanna y Rafael"></div>
+                        <div class="gallery-info">
+                            <h4>Giovanna y Rafael</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Talleres Sábado -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Talleres Sábado</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da9HEtCNqiG/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m5.jpg" onerror="this.src='img/logo3.jpg'" alt="Natalia y John"></div>
+                        <div class="gallery-info">
+                            <h4>Natalia y John</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da9Ion5AURn/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m6.jpg" onerror="this.src='img/logo3.jpg'" alt="Andres y Yessica"></div>
+                        <div class="gallery-info">
+                            <h4>Andres y Yessica</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da9J9kuJcNs/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m7.jpg" onerror="this.src='img/logo3.jpg'" alt="Giovanna y Rafael"></div>
+                        <div class="gallery-info">
+                            <h4>Giovanna y Rafael</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Talleres Domingo (SOLO LAS 3 NUEVAS) -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Talleres Domingo</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da-8EatRvzM/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m1.jpg" onerror="this.src='img/logo3.jpg'" alt="Giovanna y Rafael"></div>
+                        <div class="gallery-info">
+                            <h4>Giovanna y Rafael</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da_qWDhhiTh/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m2.jpg" onerror="this.src='img/logo3.jpg'" alt="Andres y Yessica"></div>
+                        <div class="gallery-info">
+                            <h4>Andres y Yessica</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://www.instagram.com/p/Da_tlGKxCIQ/', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m3.jpg" onerror="this.src='img/logo3.jpg'" alt="Andres, Yessica, Giovanna y Rafael"></div>
+                        <div class="gallery-info">
+                            <h4>Andres, Yessica, Giovanna y Rafael</h4>
+                            <p>Ver en Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Fotos -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Fotos</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/dt41G56WqofQtKzb8', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m7.jpg" onerror="this.src='img/logo3.jpg'" alt="Talleres Viernes"></div>
+                        <div class="gallery-info">
+                            <h4>Talleres Viernes</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/Zno7yHcgTwGx5whg7', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m8.jpg" onerror="this.src='img/logo3.jpg'" alt="Talleres Sábado"></div>
+                        <div class="gallery-info">
+                            <h4>Talleres Sábado</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/cMxXiU3EE75LkynU7', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m9.jpg" onerror="this.src='img/logo3.jpg'" alt="Talleres Domingo"></div>
+                        <div class="gallery-info">
+                            <h4>Talleres Domingo</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/84HVmqnKSWRCHwds6', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m10.jpg" onerror="this.src='img/logo3.jpg'" alt="Social Viernes"></div>
+                        <div class="gallery-info">
+                            <h4>Social Viernes</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/pcEthTcvVsAruTCS9', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m1.jpg" onerror="this.src='img/logo3.jpg'" alt="Social Sábado"></div>
+                        <div class="gallery-info">
+                            <h4>Social Sábado</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/XmaksLHtNh7JPy4E8', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m2.jpg" onerror="this.src='img/logo3.jpg'" alt="Social Domingo"></div>
+                        <div class="gallery-info">
+                            <h4>Social Domingo</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Reels Social -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Reels Social</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/B4eLANgFSqBG7eQ77', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m3.jpg" onerror="this.src='img/logo3.jpg'" alt="Viernes"></div>
+                        <div class="gallery-info">
+                            <h4>Viernes</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/GcVsuDN9J9VZqtgQ7', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m4.jpg" onerror="this.src='img/logo3.jpg'" alt="Sábado"></div>
+                        <div class="gallery-info">
+                            <h4>Sábado</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" onclick="window.open('https://photos.app.goo.gl/2gYPXmuHxj1dvi6J8', '_blank')">
+                        <div class="gallery-thumb"><img src="img/m5.jpg" onerror="this.src='img/logo3.jpg'" alt="Domingo"></div>
+                        <div class="gallery-info">
+                            <h4>Domingo</h4>
+                            <p>Ver álbum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- (La sección Shows se agregará más adelante) -->
         </section>
 
         <!-- HOTEL OFICIAL -->
